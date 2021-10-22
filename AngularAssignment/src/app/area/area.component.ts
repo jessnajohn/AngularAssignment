@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class AreaComponent implements OnInit {
   calculateAreaForm: FormGroup
   isDisabled: boolean = true;
-  //submitted = true;
+  submitted = false;
   
 
   constructor(private route: ActivatedRoute,
@@ -27,7 +27,7 @@ export class AreaComponent implements OnInit {
     });
   }
   onSubmit() {
-    // this.submitted = true;
+    this.submitted = true;
     if (this.calculateAreaForm.invalid) {
        return;
      }
@@ -36,12 +36,11 @@ export class AreaComponent implements OnInit {
 
   public calculateArea() {
      this.f.area.setValue(this.f.length.value * this.f.width.value);
-   // this.submitted = false
   }
 
-  resetForm() {
-    // this.submitted = false
-     this.calculateAreaForm.reset();
+  resetForm() {      
+      this.calculateAreaForm.reset();
+      this.submitted = false
   }
 
   textFieldTouched(){
@@ -49,13 +48,12 @@ export class AreaComponent implements OnInit {
   }
 
   get f() {
-    debugger
     return this.calculateAreaForm.controls;
   }
 
-//todonext
+//To-do
   nextClick() {
-   // this.router.navigate(['/home']);
+   // this.router.navigate(['/']);
   }
 
 

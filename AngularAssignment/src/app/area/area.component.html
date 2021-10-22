@@ -3,11 +3,11 @@
         <div class="container">
             <h3>Calculate Area</h3>
             <div class="col-xs-12">
-                <form [formGroup]="calculateAreaForm" (ngSubmit)="onSubmit()">
+                <form [formGroup]="calculateAreaForm" (ngSubmit) ="onSubmit()">
                     <div class="form-group">
                         <label for="length">Length: </label>
                         <input type="text" (click)="textFieldTouched()" id="length" formControlName="length" class="form-control"
-                            [ngClass]="{ 'is-invalid': f.length.touched && f.length.errors  }">
+                            [ngClass]="{ 'is-invalid': (f.length.touched || submitted) && f.length.errors  }">
                         <div *ngIf=" f.length.errors " class="invalid-feedback">
                             <div *ngIf=" f.length.touched && f.length.errors.required ">Please enter Length !</div>
                             <div *ngIf=" f.length.touched && f.length.errors.pattern ">Please enter a valid Length. Make sure to avoid special characters and zero!!</div>
@@ -18,8 +18,8 @@
                     <div class="form-group">
                         <label for="width">Width: </label>
                         <input type="text" (click)="textFieldTouched()" id="Width" formControlName="width" class="form-control"
-                            [ngClass]="{ 'is-invalid': f.width.touched && f.width.errors }">
-                        <div *ngIf=" f.width.touched && f.width.errors" class="invalid-feedback">
+                            [ngClass]="{ 'is-invalid': (f.width.touched || submitted) && f.width.errors }">
+                        <div *ngIf="f.width.errors" class="invalid-feedback">
                             <div *ngIf=" f.width.touched && f.width.errors.required"> Please enter Width !</div>
                             <div *ngIf=" f.width.touched && f.width.errors.pattern ">Please enter a valid Width. Make sure to avoid special characters and zero!!</div>
                             <div *ngIf=" f.width.touched && f.width.errors.minlength"> Width should contain minimum of 2 digits</div>
@@ -27,15 +27,15 @@
                         </div>
                     </div>
                     <button class="btn btn-primary" type="submit"> Submit</button>
-                    &nbsp;&nbsp;&nbsp;
-                    <button class="btn btn-primary" type="submit" (click)="resetForm()"> Clear</button>
+                    
+                    
                     <div class="form-group">
                         <label for="area">Area: </label>
                         <input type="text" id="area" formControlName="area"   class="form-control">
 
                     </div>
-                   
-                     <button class="btn btn-primary" type="submit" (click)="nextClick()"> Next</button> 
+                    <button class="btn btn-primary" type="submit" (click)="resetForm()"> Clear</button>
+                     <!-- <button class="btn btn-primary" type="submit" (click)="nextClick()"> Next</button>  -->
 
                 </form>
             </div>
