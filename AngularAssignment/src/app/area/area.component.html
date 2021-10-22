@@ -1,6 +1,6 @@
 <div class="jumbotron">
     <div class="container">
-        <div class="container">
+       
             <h3>Calculate Area</h3>
             <div class="col-xs-12">
                 <form [formGroup]="calculateAreaForm" (ngSubmit) ="onSubmit()">
@@ -34,11 +34,12 @@
                         <input type="text" id="area" formControlName="area"   class="form-control">
 
                     </div>
-                    <button class="btn btn-primary" type="submit" (click)="resetForm()"> Clear</button>
-                     <!-- <button class="btn btn-primary" type="submit" (click)="nextClick()"> Next</button>  -->
+                    <button class="btn btn-primary" type="button" (click)="resetForm()"> Clear</button>
+                    &nbsp;
+                     <button class="btn btn-primary" type="button" (click)="nextClick()"> Next</button> 
 
                 </form>
             </div>
-        </div>
+       
     </div>
 </div>

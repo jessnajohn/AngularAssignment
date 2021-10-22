@@ -14,11 +14,8 @@ export class AreaComponent implements OnInit {
   submitted = false;
   
 
-  constructor(private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,private router: Router){}
 
-    private router: Router) {
-
-  }
   ngOnInit() {
     this.calculateAreaForm = new FormGroup({
       length: new FormControl('', [Validators.required,Validators.maxLength(9), Validators.minLength(2), Validators.pattern("^[1-9][0-9]*")]),
@@ -35,7 +32,7 @@ export class AreaComponent implements OnInit {
   }
 
   public calculateArea() {
-     this.f.area.setValue(this.f.length.value * this.f.width.value);
+     this.f.area.patchValue(this.f.length.value * this.f.width.value);
   }
 
   resetForm() {      
@@ -53,7 +50,8 @@ export class AreaComponent implements OnInit {
 
 //To-do
   nextClick() {
-   // this.router.navigate(['/']);
+    // this.router.navigate(['/home']);
+    this.router.navigate(['/adduser']);
   }
 
 
